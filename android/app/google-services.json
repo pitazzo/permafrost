@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "555180597523",
+    "firebase_url": "https://permafrost-d7cf0.firebaseio.com",
+    "project_id": "permafrost-d7cf0",
+    "storage_bucket": "permafrost-d7cf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555180597523:android:ecf3bd1f8ab1ac7ec8bae6",
+        "android_client_info": {
+          "package_name": "dev.pedromalo.permafrost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555180597523-3d1smc9sav2corrf50qhu612ipu217po.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZsai_LIt626aWNZjhl__9dDiSsJnMRrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555180597523-3d1smc9sav2corrf50qhu612ipu217po.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

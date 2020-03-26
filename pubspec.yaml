@@ -1,0 +1,46 @@
+name: permafrost
+description: Gestiona tu congelador sin dolor
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  async_redux: ^2.5.4
+  json_annotation: ^3.0.1
+  datetime_picker_formfield: ^1.0.0
+  cloud_firestore: ^0.13.4+2
+  flutter_udid: ^1.0.1
+  get_it: ^4.0.1
+  shared_preferences: ^0.5.6+3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_launcher_icons: ^0.7.3
+  json_serializable: ^3.2.5
+  build_runner: ^1.8.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: PermafrostIcon
+      fonts:
+        - asset: fonts/PermafrostIcon.ttf
+    - family: Baloo 2
+      fonts:
+        - asset: fonts/Baloo2-Bold.ttf
+        - asset: fonts/Baloo2-Medium.ttf
+        - asset: fonts/Baloo2-SemiBold.ttf
+        - asset: fonts/Baloo2-ExtraBold.ttf
+        - asset: fonts/Baloo2-Regular.ttf
+
+flutter_icons:
+  image_path: "assets/icons/ic_launcher.png"
+  android: true
