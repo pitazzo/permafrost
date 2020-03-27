@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 import 'package:permafrost/core/services/validators.dart';
-import 'package:permafrost/ui/widgets/save_button.dart';
+import 'package:permafrost/ui/widgets/misc/save_button.dart';
 
 class ItemAdder extends StatefulWidget {
   final Function(String, double, String, DateTime, DateTime) onAdded;
