@@ -52,7 +52,7 @@ class _CompartmentBoxState extends State<CompartmentBox> {
           color: CustomColors.compartmentColors[widget.compartment.color],
           textColor: Colors.white,
           child: Text("Editar".toUpperCase(),
-              style: TextStyle(fontSize: 14, fontFamily: 'Baloo 2')),
+              style: Theme.of(context).textTheme.button),
         ),
         RaisedButton(
           shape:
@@ -64,7 +64,7 @@ class _CompartmentBoxState extends State<CompartmentBox> {
           color: CustomColors.compartmentColors[widget.compartment.color],
           textColor: Colors.white,
           child: Text("Eliminar".toUpperCase(),
-              style: TextStyle(fontSize: 14, fontFamily: 'Baloo 2')),
+              style: Theme.of(context).textTheme.button),
         ),
       ],
     );
@@ -89,17 +89,10 @@ class _CompartmentBoxState extends State<CompartmentBox> {
             children: <TextSpan>[
               TextSpan(
                   text: widget.compartment.name + '\n',
-                  style: TextStyle(
-                      color: Colors.indigo,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Baloo 2')),
+                  style: Theme.of(context).textTheme.headline6),
               TextSpan(
                   text: this.widget.items.toString() + ' elementos',
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 15.0,
-                      fontFamily: 'Baloo 2')),
+                  style: Theme.of(context).textTheme.subtitle1),
             ],
           ),
         ),

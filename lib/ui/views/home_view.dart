@@ -46,14 +46,10 @@ class _HomeViewState extends State<HomeView> {
                 children: <TextSpan>[
                   TextSpan(
                       text: 'Hola, Eva\n',
-                      style: TextStyle(
-                          color: Colors.indigo,
-                          fontSize: 50.0,
-                          fontFamily: 'Baloo 2',
-                          fontWeight: FontWeight.bold)),
+                      style: Theme.of(context).textTheme.headline1),
                   TextSpan(
                       text: 'Esto es lo que hay en el congelador\n',
-                      style: TextStyle(color: Colors.black54, fontSize: 20.0, fontFamily: 'Baloo 2',)),
+                      style: Theme.of(context).textTheme.bodyText2),
                 ],
               ),
             ),

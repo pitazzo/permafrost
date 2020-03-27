@@ -29,21 +29,23 @@ class PermafrostDrawer extends StatelessWidget {
                     leading: CircleAvatar(
                       radius: 30,
                       child: Text('E',
-                          style:
-                              TextStyle(fontFamily: 'Baloo 2', fontSize: 40)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline2
+                              .copyWith(color: Colors.white)),
                     ),
                     title: Text('Eva',
-                        style: TextStyle(fontFamily: 'Baloo 2', fontSize: 30)),
+                        style: Theme.of(context).textTheme.headline3),
                   ),
                   Expanded(
                     child: ListView(
                       children: <Widget>[
-                        _buildTile(
-                            "/", "Cajones", Icons.border_all, selectedMenu),
-                        _buildTile(
-                            "items", "Elementos", Icons.list, selectedMenu),
-                        _buildTile(
-                            "settings", "Ajustes", Icons.settings, selectedMenu)
+                        _buildTile(context, "/", "Cajones", Icons.border_all,
+                            selectedMenu),
+                        _buildTile(context, "items", "Elementos", Icons.list,
+                            selectedMenu),
+                        _buildTile(context, "settings", "Ajustes",
+                            Icons.settings, selectedMenu)
                       ],
                     ),
                   ),
@@ -54,20 +56,25 @@ class PermafrostDrawer extends StatelessWidget {
         Container(
           height: 100,
           child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              child: ListTile(
-                leading: Icon(Icons.ac_unit, color: Colors.indigo[300], size: 40),
-                title: Text('Permafrost v. 0.1', style: TextStyle(fontFamily: 'Baloo 2')),
-                subtitle: Text('por pedromalo.dev', style: TextStyle(fontFamily: 'Baloo 2')),
-              ),  
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: ListTile(
+              leading: Icon(Icons.ac_unit, color: Colors.indigo[300], size: 40),
+              title: Text('Permafrost v. 0.1',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      .copyWith(color: Colors.black)),
+              subtitle: Text('por pedromalo.dev',
+                  style: Theme.of(context).textTheme.subtitle1),
             ),
+          ),
         )
       ],
     ));
   }
 
-  Widget _buildTile(
-      String id, String name, IconData iconData, String selectedTile) {
+  Widget _buildTile(BuildContext context, String id, String name,
+      IconData iconData, String selectedTile) {
     return GestureDetector(
         onTap: () => onMenuSelected(id),
         child: id == selectedTile
@@ -82,11 +89,7 @@ class PermafrostDrawer extends StatelessWidget {
                   ),
                   title: Text(
                     name,
-                    style: TextStyle(
-                        color: Colors.indigo,
-                        fontFamily: 'Baloo 2',
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
               )
@@ -97,10 +100,10 @@ class PermafrostDrawer extends StatelessWidget {
                 ),
                 title: Text(
                   name,
-                  style: TextStyle(
-                      fontFamily: 'Baloo 2',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6
+                      .copyWith(color: Colors.black),
                 ),
               ));
   }

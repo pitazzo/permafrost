@@ -34,17 +34,10 @@ class CompartmentDetails extends StatelessWidget {
               children: <TextSpan>[
                 TextSpan(
                     text: compartment.name + '\n',
-                    style: TextStyle(
-                        fontFamily: 'Baloo 2',
-                        color: Colors.indigo,
-                        fontSize: 50.0,
-                        fontWeight: FontWeight.bold)),
+                    style: Theme.of(context).textTheme.headline1),
                 TextSpan(
                     text: items.length.toString() + ' elementos' '\n',
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: 'Baloo 2',
-                        fontSize: 20.0)),
+                    style: Theme.of(context).textTheme.bodyText2),
               ],
             ),
           ),

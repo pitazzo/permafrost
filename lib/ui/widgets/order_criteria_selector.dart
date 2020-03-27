@@ -20,15 +20,16 @@ class OrderCriteriaSelector extends StatelessWidget {
       child: Wrap(
         direction: Axis.horizontal,
         children: <Widget>[
-          _buildChip(OrderCriteria.ALPHABETIC, currentCriteria),
-          _buildChip(OrderCriteria.ENTRY_DATE, currentCriteria),
-          _buildChip(OrderCriteria.EXPIRY_DATE, currentCriteria)
+          _buildChip(context, OrderCriteria.ALPHABETIC, currentCriteria),
+          _buildChip(context, OrderCriteria.ENTRY_DATE, currentCriteria),
+          _buildChip(context, OrderCriteria.EXPIRY_DATE, currentCriteria)
         ],
       ),
     );
   }
 
-  Widget _buildChip(OrderCriteria criteria, OrderCriteria currentCriteria) {
+  Widget _buildChip(BuildContext context, OrderCriteria criteria,
+      OrderCriteria currentCriteria) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
       child: GestureDetector(
@@ -36,9 +37,7 @@ class OrderCriteriaSelector extends StatelessWidget {
         child: Chip(
             label: Text(
               humanCriteria[criteria],
-              style: TextStyle(
-                  fontFamily: 'Baloo 2',
-                  fontSize: 16,
+              style: Theme.of(context).textTheme.subtitle1.copyWith(
                   color:
                       criteria == currentCriteria ? Colors.white : Colors.grey),
             ),
