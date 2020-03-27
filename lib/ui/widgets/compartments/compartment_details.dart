@@ -3,6 +3,7 @@ import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
 import 'package:permafrost/ui/widgets/items/item_tile.dart';
+import 'package:permafrost/ui/widgets/misc/empty_list.dart';
 
 class CompartmentDetails extends StatelessWidget {
   final Compartment compartment;
@@ -41,23 +42,26 @@ class CompartmentDetails extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: List.generate(items.length + 1, (index) {
-                if (index < items.length) {
-                  return ItemTile(item: items[index]);
-                } else {
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Icon(Icons.ac_unit,
-                          color: Theme.of(context).primaryColorLight, size: 40),
-                    ),
-                  );
-                }
-              }),
-            ),
-          )
+          items.length == 0
+              ? EmptyList()
+              : Expanded(
+                  child: ListView(
+                    children: List.generate(items.length + 1, (index) {
+                      if (index < items.length) {
+                        return ItemTile(item: items[index]);
+                      } else {
+                        return Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Icon(Icons.ac_unit,
+                                color: Theme.of(context).primaryColorLight,
+                                size: 40),
+                          ),
+                        );
+                      }
+                    }),
+                  ),
+                )
         ]);
   }
 }
