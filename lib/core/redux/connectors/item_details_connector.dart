@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/core/redux/actions/item_actions.dart';
 import 'package:permafrost/core/redux/app_state.dart';
-import 'package:permafrost/ui/widgets/item_details.dart';
+import 'package:permafrost/ui/widgets/items/item_details.dart';
 
 class ItemDetailsConnector extends StatelessWidget {
   final Item item;

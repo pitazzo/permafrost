@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:permafrost/core/enums/order_critera.dart';
 import 'package:permafrost/core/redux/actions/item_list_actions.dart';
 import 'package:permafrost/core/redux/app_state.dart';
-import 'package:permafrost/ui/widgets/order_criteria_selector.dart';
+import 'package:permafrost/ui/widgets/misc/order_criteria_selector.dart';
 
 class OrderCriteriaSelectorConnector extends StatelessWidget {
   @override

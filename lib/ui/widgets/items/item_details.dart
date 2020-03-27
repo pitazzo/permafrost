@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/ui/shared/utils.dart';
-import 'package:permafrost/ui/widgets/save_button.dart';
+import 'package:permafrost/ui/widgets/misc/save_button.dart';
 
 class ItemDetails extends StatefulWidget {
   final Item item;
