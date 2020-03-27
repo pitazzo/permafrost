@@ -77,7 +77,7 @@ class _CompartmentBoxState extends State<CompartmentBox> {
         Hero(
           tag: 'hero-compartment-' + this.widget.compartment.id.toString(),
           child: CompartmentIcon(
-            size: 70,
+            size: 60,
             icon: widget.compartment.icon,
             color: widget.compartment.color,
           ),

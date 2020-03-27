@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permafrost/core/redux/connectors/drawer_connector.dart';
 import 'package:permafrost/core/redux/connectors/item_list_connector.dart';
 import 'package:permafrost/core/redux/connectors/order_criteria_selector_connector.dart';
+import 'package:permafrost/core/redux/connectors/search_bar_connector.dart';
 
 class ItemListView extends StatelessWidget {
   @override
@@ -32,6 +33,7 @@ class ItemListView extends StatelessWidget {
               'Elementos',
               style: Theme.of(context).textTheme.headline1),
             OrderCriteriaSelectorConnector(),
+            SearchBarConector(),
             Expanded(child: ItemListConnector())
           ],
         ),

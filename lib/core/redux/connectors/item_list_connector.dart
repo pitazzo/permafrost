@@ -30,7 +30,11 @@ class ViewModel extends BaseModel<AppState> {
   BaseModel fromStore() {
     List<Item> items = state.items.toList();
     if (state.searchCriteria.trim() != "") {
-      items = items.where((item) => item.name.contains(state.searchCriteria));
+      items = items
+          .where((item) => item.name
+              .toLowerCase()
+              .contains(state.searchCriteria.toLowerCase()))
+          .toList();
     }
     Function(Item, Item) sortFunction;
     switch (state.orderCritera) {
@@ -57,9 +61,6 @@ class ViewModel extends BaseModel<AppState> {
 
     items.sort(sortFunction);
 
-    return ViewModel.buid(
-      compartments: state.compartments,
-      items: items,
-    );
+    return ViewModel.buid(compartments: state.compartments, items: items);
   }
 }
