@@ -52,7 +52,7 @@ class AppState {
         .forEach((compartment) => output += compartment.toString() + ', ');
     output += '}, currentlySelectedMenu: ' +
         this.currentlySelectedMenu.toString() +
-        '}';
+        '}, search: ' + this.searchCriteria + '}, ';
     output += '{Items: ';
 
     this.items.forEach((item) => output += item.toString() + ', ');
