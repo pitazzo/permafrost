@@ -3,7 +3,7 @@ import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/core/redux/connectors/item_details_connector.dart';
 import 'package:permafrost/ui/shared/utils.dart';
-import 'package:permafrost/ui/widgets/compartment_icon.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
 
 class ItemTile extends StatelessWidget {
   final Item item;

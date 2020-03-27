@@ -4,7 +4,7 @@ import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/services/validators.dart';
 import 'package:permafrost/ui/shared/custom_colors.dart';
 import 'package:permafrost/ui/shared/permafrost_icons.dart';
-import 'package:permafrost/ui/widgets/compartment_icon.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
 import 'package:permafrost/ui/widgets/save_button.dart';
 
 class CompartmentEditor extends StatefulWidget {

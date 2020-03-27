@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/redux/actions/compartment_actions.dart';
 import 'package:permafrost/core/redux/app_state.dart';
-import 'package:permafrost/ui/widgets/compartment_editor.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_editor.dart';
 
 class CompartmentEditorConnector extends StatelessWidget {
   final bool isEditing;

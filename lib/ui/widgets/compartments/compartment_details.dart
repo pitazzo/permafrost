@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/models/item.dart';
-import 'package:permafrost/ui/widgets/compartment_icon.dart';
-import 'package:permafrost/ui/widgets/item_tile.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
+import 'package:permafrost/ui/widgets/items/item_tile.dart';
 
 class CompartmentDetails extends StatelessWidget {
   final Compartment compartment;

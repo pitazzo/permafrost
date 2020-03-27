@@ -4,7 +4,7 @@ import 'package:permafrost/core/enums/order_critera.dart';
 import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/core/redux/app_state.dart';
-import 'package:permafrost/ui/widgets/item_list.dart';
+import 'package:permafrost/ui/widgets/items/item_list.dart';
 
 class ItemListConnector extends StatelessWidget {
   @override

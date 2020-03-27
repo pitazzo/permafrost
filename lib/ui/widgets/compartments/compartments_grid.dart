@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/compartment.dart';
-import 'package:permafrost/ui/widgets/compartment_box.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_box.dart';
 import 'package:permafrost/ui/widgets/new_compartment_box.dart';
 
 class CompartmentsGrid extends StatelessWidget {
