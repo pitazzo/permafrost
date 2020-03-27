@@ -28,12 +28,7 @@ class SettingsView extends StatelessWidget {
             Container(height: 20),
             Text(
               'Ajustes',
-              style: TextStyle(
-                  fontFamily: 'Baloo 2',
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.indigo),
-            ),
+              style: Theme.of(context).textTheme.headline1),
           ],
         ),
       ),

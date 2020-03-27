@@ -5,6 +5,7 @@ import 'package:permafrost/core/services/validators.dart';
 import 'package:permafrost/ui/shared/custom_colors.dart';
 import 'package:permafrost/ui/shared/permafrost_icons.dart';
 import 'package:permafrost/ui/widgets/compartment_icon.dart';
+import 'package:permafrost/ui/widgets/save_button.dart';
 
 class CompartmentEditor extends StatefulWidget {
   final Compartment compartment;
@@ -64,10 +65,7 @@ class _CompartmentEditorState extends State<CompartmentEditor> {
                 onSaved: (value) => _name = value,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(hintText: 'Nombre'),
-                style: TextStyle(
-                    color: Colors.indigo,
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headline1,
               ),
               Container(
                 height: 20,
@@ -118,27 +116,14 @@ class _CompartmentEditorState extends State<CompartmentEditor> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0),
-        child: FlatButton(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.check_circle_outline, color: Colors.indigo),
-              Text(
-                '  GUARDAR',
-                style: TextStyle(color: Colors.indigo, fontSize: 20, fontFamily: 'Baloo 2'),
-              ),
-            ],
-          ),
-          onPressed: () {
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          child: SaveButton(onSave: () {
             if (_formKey.currentState.validate()) {
               _formKey.currentState.save();
               widget.onSaved(_id, _name, _color, _icon);
               Navigator.of(context).pop();
             }
-          },
-        ),
-      )
+          }))
     ]);
   }
 }

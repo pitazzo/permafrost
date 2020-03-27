@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
 import 'package:permafrost/core/services/validators.dart';
+import 'package:permafrost/ui/widgets/save_button.dart';
 
 class ItemAdder extends StatefulWidget {
   final Function(String, double, String, DateTime, DateTime) onAdded;
@@ -50,7 +51,7 @@ class _ItemAdderState extends State<ItemAdder> {
                   child: TextFormField(
                     validator: FormValidators.lengthValidator,
                     keyboardType: TextInputType.multiline,
-                    style: TextStyle(fontFamily: 'Baloo 2'),
+                    style: Theme.of(context).textTheme.subtitle1,
                     decoration: InputDecoration(
                       labelText: "Nombre",
                       border: outlineInputBorder,
@@ -68,7 +69,7 @@ class _ItemAdderState extends State<ItemAdder> {
                               ? FormValidators.intAmountValidator
                               : FormValidators.doubleAmountValidator,
                           keyboardType: TextInputType.number,
-                          style: TextStyle(fontFamily: 'Baloo 2'),
+                           style: Theme.of(context).textTheme.subtitle1,
                           decoration: InputDecoration(
                             labelText: "Cantidad",
                             border: outlineInputBorder,
@@ -85,7 +86,7 @@ class _ItemAdderState extends State<ItemAdder> {
                               value: value,
                               child: Text(
                                 value,
-                                style: TextStyle(fontFamily: 'Baloo 2'),
+                                style: Theme.of(context).textTheme.subtitle1,
                               ),
                             );
                           }).toList(),
@@ -105,7 +106,7 @@ class _ItemAdderState extends State<ItemAdder> {
                             resetIcon: null,
                             format: DateFormat('dd/MM/yyyy'),
                             initialValue: _entryDate,
-                            style: TextStyle(fontFamily: 'Baloo 2'),
+                            style: Theme.of(context).textTheme.subtitle1,
                             decoration: InputDecoration(
                               labelText: "Fecha de entrada",
                               border: outlineInputBorder,
@@ -124,7 +125,7 @@ class _ItemAdderState extends State<ItemAdder> {
                         child: DateTimeField(
                             resetIcon: null,
                             format: DateFormat('dd/MM/yyyy'),
-                            style: TextStyle(fontFamily: 'Baloo 2'),
+                            style: Theme.of(context).textTheme.subtitle1,
                             initialValue: _expiryDate,
                             decoration: InputDecoration(
                               labelText: "Fecha de caducidad",
@@ -146,30 +147,14 @@ class _ItemAdderState extends State<ItemAdder> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
-            child: FlatButton(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.check_circle_outline, color: Colors.indigo),
-                  Text(
-                    '  GUARDAR',
-                    style: TextStyle(
-                        color: Colors.indigo,
-                        fontSize: 20,
-                        fontFamily: 'Baloo 2'),
-                  ),
-                ],
-              ),
-              onPressed: () {
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: SaveButton(onSave: () {
                 if (_formKey.currentState.validate()) {
                   widget.onAdded(
                       _name, _amount, _units, _entryDate, _expiryDate);
                   Navigator.of(context).pop();
                 }
-              },
-            ),
-          )
+              }))
         ],
       ),
     );

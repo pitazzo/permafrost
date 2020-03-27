@@ -5,6 +5,7 @@ import 'package:permafrost/core/services/persistor.dart';
 import 'package:permafrost/locator.dart';
 import 'package:permafrost/ui/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:permafrost/ui/shared/theme.dart';
 
 import 'core/redux/actions/firebase_actions.dart';
 
@@ -52,9 +53,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Permafrost',
       navigatorKey: navigatorKey,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo
-      ),
+      theme: theme,
       initialRoute: '/',
       onGenerateRoute: Router.generateRoute,
       localizationsDelegates: [

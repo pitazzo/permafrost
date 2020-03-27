@@ -23,24 +23,20 @@ class ItemTile extends StatelessWidget {
                 : null,
             title: Text(
               item.name,
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18.0,
-                  fontFamily: 'Baloo 2',
-                  color: Colors.indigo),
+              style: Theme.of(context).textTheme.headline6,
             ),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 compartment != null
-                ? Text(compartment.name, style: TextStyle(fontFamily: 'Baloo 2', fontWeight: FontWeight.bold))
+                ? Text(compartment.name, style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black))
                 : Container(),
                 Text('antes del ' + dateToString(item.expiryDate),
-                    style: TextStyle(fontFamily: 'Baloo 2')),
+                    style: Theme.of(context).textTheme.subtitle1),
               ],
             ),
             trailing: Text(amountToString(item.amount, item.units),
-                style: TextStyle(fontFamily: 'Baloo 2')),
+                style: Theme.of(context).textTheme.bodyText2),
             onTap: () => showModalBottomSheet(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(

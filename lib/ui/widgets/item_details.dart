@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/ui/shared/utils.dart';
+import 'package:permafrost/ui/widgets/save_button.dart';
 
 class ItemDetails extends StatefulWidget {
   final Item item;
@@ -34,21 +35,16 @@ class _ItemDetailsState extends State<ItemDetails> {
               Container(height: 10),
               Text(
                 widget.item.name,
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600, fontFamily: 'Baloo 2'),
+                style: Theme.of(context).textTheme.headline3.copyWith(color: Colors.indigo)
               ),
               Divider(),
               Container(height: 5),
-              Text(
-                'desde el ' + dateToString(widget.item.entryDate),
-                style: TextStyle(fontSize: 15, fontFamily: 'Baloo 2')
-              ),
+              Text('desde el ' + dateToString(widget.item.entryDate),
+                  style: Theme.of(context).textTheme.bodyText2),
               Container(height: 5),
-              Text(
-                'antes del ' + dateToString(widget.item.expiryDate),
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15, fontFamily: 'Baloo 2')
-
-              ),
+              Text('antes del ' + dateToString(widget.item.expiryDate),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText2),
               Container(height: 10),
               Row(
                 children: <Widget>[
@@ -66,26 +62,14 @@ class _ItemDetailsState extends State<ItemDetails> {
                   Text(
                     amountToString(_amount, widget.item.units),
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600, fontFamily: 'Baloo 2'),
+                    style: Theme.of(context).textTheme.headline3.copyWith(fontSize: 25),
                   ),
                 ],
               ),
-              FlatButton(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(Icons.check_circle_outline, color: Colors.indigo),
-                    Text(
-                      '  GUARDAR',
-                      style: TextStyle(color: Colors.indigo, fontSize: 20, fontFamily: 'Baloo 2'),
-                    ),
-                  ],
-                ),
-                onPressed: () {
-                  widget.onAmountEdit(widget.item.id, _amount);
-                  Navigator.of(context).pop();
-                },
-              )
+              SaveButton(onSave: () {
+                widget.onAmountEdit(widget.item.id, _amount);
+                Navigator.of(context).pop();
+              })
             ],
           ),
         )
