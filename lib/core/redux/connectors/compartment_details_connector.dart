@@ -3,7 +3,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/models/item.dart';
 import 'package:permafrost/core/redux/app_state.dart';
-import 'package:permafrost/ui/widgets/compartment_details.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_details.dart';
 
 class CompartmentDetailsConnector extends StatelessWidget {
   final int compartmentId;

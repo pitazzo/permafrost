@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/ui/shared/custom_colors.dart';
-import 'package:permafrost/ui/widgets/compartment_icon.dart';
+import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
 
 class CompartmentBox extends StatefulWidget {
   final Compartment compartment;

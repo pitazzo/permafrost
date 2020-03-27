@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/compartment.dart';
 import 'package:permafrost/core/models/item.dart';
-import 'package:permafrost/ui/widgets/item_tile.dart';
+import 'package:permafrost/ui/widgets/items/item_tile.dart';
 
 class ItemList extends StatelessWidget {
   final List<Item> items;
