@@ -35,7 +35,7 @@ class _ItemDetailsState extends State<ItemDetails> {
               Container(height: 10),
               Text(
                 widget.item.name,
-                style: Theme.of(context).textTheme.headline3.copyWith(color: Colors.indigo)
+                style: Theme.of(context).textTheme.headline3.copyWith(color: Theme.of(context).accentColor)
               ),
               Divider(),
               Container(height: 5),

@@ -20,7 +20,7 @@ class NewCompartmentBox extends StatelessWidget {
                 child: Icon(
                   Icons.add,
                   size: 80,
-                  color: Colors.indigo,
+                  color: Theme.of(context).accentColor,
                 ),
               )),
         ));

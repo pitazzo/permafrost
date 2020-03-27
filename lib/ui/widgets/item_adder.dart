@@ -33,7 +33,7 @@ class _ItemAdderState extends State<ItemAdder> {
   @override
   Widget build(BuildContext context) {
     var outlineInputBorder = OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.indigo, width: 2.0),
+      borderSide: BorderSide(color: Theme.of(context).accentColor, width: 2.0),
       borderRadius: BorderRadius.circular(15.0),
     );
     return Padding(
