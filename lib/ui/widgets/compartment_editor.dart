@@ -84,7 +84,7 @@ class _CompartmentEditorState extends State<CompartmentEditor> {
                               PermafrostIcon.IconsMap[icon],
                               color: icon == _icon
                                   ? CustomColors.compartmentColors[_color]
-                                  : Colors.indigo,
+                                  : Theme.of(context).accentColor,
                               size: 45,
                             )),
                       );

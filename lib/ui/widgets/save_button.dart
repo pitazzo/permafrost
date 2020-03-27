@@ -11,13 +11,13 @@ class SaveButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.check_circle_outline, color: Colors.indigo),
+            Icon(Icons.check_circle_outline, color: Theme.of(context).accentColor),
             Text(
               '  GUARDAR',
               style: Theme.of(context)
                   .textTheme
                   .button
-                  .copyWith(color: Colors.indigo, fontSize: 20),
+                  .copyWith(color: Theme.of(context).accentColor, fontSize: 20),
             ),
           ],
         ),

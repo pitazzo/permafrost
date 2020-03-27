@@ -20,7 +20,7 @@ class ItemListView extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 50.0),
                       child: Icon(
                         Icons.menu,
-                        color: Colors.indigo[300],
+                        color: Theme.of(context).primaryColorLight,
                         size: 30,
                       ),
                     ),

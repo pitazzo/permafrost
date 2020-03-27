@@ -51,7 +51,7 @@ class CompartmentDetails extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Icon(Icons.ac_unit,
-                          color: Colors.indigo[300], size: 40),
+                          color: Theme.of(context).primaryColorLight, size: 40),
                     ),
                   );
                 }

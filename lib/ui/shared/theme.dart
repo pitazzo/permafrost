@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData theme = ThemeData(
     primarySwatch: Colors.indigo,
+    primaryColorLight: Colors.indigo[300],
     textTheme: TextTheme(
         headline1: TextStyle(
             fontFamily: 'Baloo 2',

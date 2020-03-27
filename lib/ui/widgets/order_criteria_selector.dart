@@ -42,7 +42,7 @@ class OrderCriteriaSelector extends StatelessWidget {
                       criteria == currentCriteria ? Colors.white : Colors.grey),
             ),
             backgroundColor:
-                criteria == currentCriteria ? Colors.indigo : Colors.white),
+                criteria == currentCriteria ? Theme.of(context).accentColor : Colors.white),
       ),
     );
   }
