@@ -58,7 +58,8 @@ class PermafrostDrawer extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             child: ListTile(
-              leading: Icon(Icons.ac_unit, color: Theme.of(context).primaryColorLight, size: 40),
+              leading: Icon(Icons.ac_unit,
+                  color: Theme.of(context).primaryColorLight, size: 40),
               title: Text('Permafrost v. 0.1',
                   style: Theme.of(context)
                       .textTheme

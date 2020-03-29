@@ -31,10 +31,10 @@ class ViewModel extends BaseModel<AppState> {
   @override
   ViewModel fromStore() => ViewModel.build(
       currentlySelectedMenu: state.currentlySelectedMenu,
-      onMenuSelected: (menuId){
-        if(menuId != state.currentlySelectedMenu){
+      onMenuSelected: (menuId) {
+        if (menuId != state.currentlySelectedMenu) {
           dispatch(SelectMenuAction(selectedMenu: menuId));
-        }else{
+        } else {
           dispatch(NavigateAction.pop());
         }
       });

@@ -29,9 +29,7 @@ class ItemListView extends StatelessWidget {
               ),
             ),
             Container(height: 20),
-            Text(
-              'Elementos',
-              style: Theme.of(context).textTheme.headline1),
+            Text('Elementos', style: Theme.of(context).textTheme.headline1),
             OrderCriteriaSelectorConnector(),
             SearchBarConector(),
             Expanded(child: ItemListConnector())

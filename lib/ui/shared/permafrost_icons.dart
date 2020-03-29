@@ -20,18 +20,18 @@ class PermafrostIcon {
   static const IconData icecream = IconData(0xe80d, fontFamily: _kFontFam);
 
   static const Map<String, IconData> IconsMap = <String, IconData>{
-    'snack' : snack,
-    'shrimp' : shrimp,
-    'cheese' : cheese,
-    'drinks' : drinks,
-    'ice' : ice,
-    'tuppers' : tuppers,
-    'fish' : fish,
-    'misc' : misc,
-    'greens' : greens,
-    'meat' : meat,
-    'bread' : bread,
-    'fruits' : fruits,
-    'icecream' : icecream,
+    'snack': snack,
+    'shrimp': shrimp,
+    'cheese': cheese,
+    'drinks': drinks,
+    'ice': ice,
+    'tuppers': tuppers,
+    'fish': fish,
+    'misc': misc,
+    'greens': greens,
+    'meat': meat,
+    'bread': bread,
+    'fruits': fruits,
+    'icecream': icecream,
   };
 }

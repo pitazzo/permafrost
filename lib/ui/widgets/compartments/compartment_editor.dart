@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
-import 'package:permafrost/core/models/compartment.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
 import 'package:permafrost/core/services/validators.dart';
 import 'package:permafrost/ui/shared/custom_colors.dart';
 import 'package:permafrost/ui/shared/permafrost_icons.dart';

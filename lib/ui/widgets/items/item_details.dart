@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:permafrost/core/models/item.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
+
 import 'package:permafrost/ui/shared/utils.dart';
 import 'package:permafrost/ui/widgets/misc/save_button.dart';
 
@@ -33,10 +34,11 @@ class _ItemDetailsState extends State<ItemDetails> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(height: 10),
-              Text(
-                widget.item.name,
-                style: Theme.of(context).textTheme.headline3.copyWith(color: Theme.of(context).accentColor)
-              ),
+              Text(widget.item.name,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3
+                      .copyWith(color: Theme.of(context).accentColor)),
               Divider(),
               Container(height: 5),
               Text('desde el ' + dateToString(widget.item.entryDate),
@@ -62,7 +64,10 @@ class _ItemDetailsState extends State<ItemDetails> {
                   Text(
                     amountToString(_amount, widget.item.units),
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline3.copyWith(fontSize: 25),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline3
+                        .copyWith(fontSize: 25),
                   ),
                 ],
               ),

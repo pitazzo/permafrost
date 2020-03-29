@@ -1,6 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:meta/meta.dart';
-import 'package:permafrost/core/models/item.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
+
 import 'package:permafrost/core/redux/app_state.dart';
 
 class AddItemsAction extends ReduxAction<AppState> {
@@ -9,7 +10,8 @@ class AddItemsAction extends ReduxAction<AppState> {
 
   @override
   AppState reduce() {
-    return state.copy(items: List.unmodifiable(this.items));
+    return state.copy(
+        fridge: state.fridge.copy(items: List.unmodifiable(this.items)));
   }
 }
 
@@ -31,8 +33,8 @@ class AddItemAction extends ReduxAction<AppState> {
 
   @override
   AppState reduce() {
-    int nextId = state.items.fold(0,
-            (max, item) => item.id > max ? item.id : max) +
+    int nextId = state.fridge.items
+            .fold(0, (max, item) => item.id > max ? item.id : max) +
         1;
     Item newItem = Item(
         id: nextId,
@@ -42,7 +44,9 @@ class AddItemAction extends ReduxAction<AppState> {
         entryDate: entryDate,
         expiryDate: expiryDate,
         compartmentId: compartmentId);
-    return state.copy(items: state.items.toList()..add(newItem));
+    return state.copy(
+        fridge: state.fridge
+            .copy(items: state.fridge.items.toList()..add(newItem)));
   }
 }
 
@@ -56,17 +60,19 @@ class EditItemAmountAction extends ReduxAction<AppState> {
   AppState reduce() {
     if (this.amount == 0) {
       return state.copy(
-          items: List.unmodifiable(
-              state.items.toList()..removeWhere((item) => this.id == item.id)));
+          fridge: state.fridge.copy(
+              items: List.unmodifiable(state.fridge.items.toList()
+                ..removeWhere((item) => this.id == item.id))));
     } else {
       return state.copy(
-          items: List.unmodifiable(state.items.toList().map((item) {
+          fridge: state.fridge.copy(
+              items: List.unmodifiable(state.fridge.items.toList().map((item) {
         if (item.id == this.id) {
           return item.copy(amount: this.amount);
         } else {
           return item;
         }
-      }).toList()));
+      }).toList())));
     }
   }
 }
@@ -78,7 +84,8 @@ class BulkItemsRemoveAction extends ReduxAction<AppState> {
   @override
   AppState reduce() {
     return state.copy(
-        items: List.unmodifiable(state.items.toList()
-          ..removeWhere((item) => this.ids.contains(item.id))));
+        fridge: state.fridge.copy(
+            items: List.unmodifiable(state.fridge.items.toList()
+              ..removeWhere((item) => this.ids.contains(item.id)))));
   }
 }

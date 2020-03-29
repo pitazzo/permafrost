@@ -69,7 +69,7 @@ class _ItemAdderState extends State<ItemAdder> {
                               ? FormValidators.intAmountValidator
                               : FormValidators.doubleAmountValidator,
                           keyboardType: TextInputType.number,
-                           style: Theme.of(context).textTheme.subtitle1,
+                          style: Theme.of(context).textTheme.subtitle1,
                           decoration: InputDecoration(
                             labelText: "Cantidad",
                             border: outlineInputBorder,

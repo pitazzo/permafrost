@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:permafrost/core/models/compartment.dart';
-import 'package:permafrost/core/models/item.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
+
 import 'package:permafrost/core/redux/app_state.dart';
 import 'package:permafrost/ui/widgets/compartments/compartment_details.dart';
 
@@ -34,9 +35,9 @@ class ViewModel extends BaseModel<AppState> {
 
   @override
   BaseModel fromStore() => ViewModel.build(
-      compartment: state.compartments
+      compartment: state.fridge.compartments
           .firstWhere((compartment) => compartment.id == this.compartmentId),
-      items: state.items
+      items: state.fridge.items
           .where((item) => item.compartmentId == this.compartmentId)
           .toList());
 }

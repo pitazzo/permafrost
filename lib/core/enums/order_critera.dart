@@ -1,5 +1,1 @@
-enum OrderCriteria{
-  ALPHABETIC,
-  EXPIRY_DATE,
-  ENTRY_DATE
-}
+enum OrderCriteria { ALPHABETIC, EXPIRY_DATE, ENTRY_DATE }
