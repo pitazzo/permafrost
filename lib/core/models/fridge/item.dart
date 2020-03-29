@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:meta/meta.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -13,23 +15,25 @@ class Item {
   final DateTime expiryDate;
   final int compartmentId;
 
-  Item(
-      {@required this.id,
-      @required this.name,
-      @required this.amount,
-      @required this.units,
-      @required this.entryDate,
-      @required this.expiryDate,
-      @required this.compartmentId});
+  Item({
+    @required this.id,
+    @required this.name,
+    @required this.amount,
+    @required this.units,
+    @required this.entryDate,
+    @required this.expiryDate,
+    @required this.compartmentId,
+  });
 
-  Item copy(
-      {int id,
-      String name,
-      double amount,
-      String units,
-      DateTime entryDate,
-      DateTime expiryDate,
-      int compartmentId}) {
+  Item copy({
+    int id,
+    String name,
+    double amount,
+    String units,
+    DateTime entryDate,
+    DateTime expiryDate,
+    int compartmentId,
+  }) {
     return Item(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -43,7 +47,8 @@ class Item {
 
   @override
   String toString() {
-    return '{$id, $name, $compartmentId}';
+    var encoder = new JsonEncoder.withIndent("     ");
+    return encoder.convert(this.toJson());
   }
 
   @override
@@ -60,9 +65,9 @@ class Item {
   }
 
   @override
-  int get hashCode => this.hashCode;
+  int get hashCode => this.id ^ this.name.hashCode ^ this.amount.hashCode;
 
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ItemToJson(this);  
+  Map<String, dynamic> toJson() => _$ItemToJson(this);
 }

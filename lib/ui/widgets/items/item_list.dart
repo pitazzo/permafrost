@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:permafrost/core/models/compartment.dart';
-import 'package:permafrost/core/models/item.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
+
 import 'package:permafrost/ui/widgets/items/item_tile.dart';
 import 'package:permafrost/ui/widgets/misc/empty_list.dart';
 
@@ -12,7 +13,7 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if(items.length == 0){
+    if (items.length == 0) {
       return EmptyList();
     }
     return ListView(

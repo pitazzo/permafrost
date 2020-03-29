@@ -11,8 +11,11 @@ ThemeData theme = ThemeData(
             color: Colors.indigo),
         headline2:
             TextStyle(fontFamily: 'Baloo 2', fontSize: 40, color: Colors.black),
-        headline3:
-            TextStyle(fontFamily: 'Baloo 2', fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
+        headline3: TextStyle(
+            fontFamily: 'Baloo 2',
+            fontSize: 30,
+            color: Colors.black,
+            fontWeight: FontWeight.bold),
         headline6: TextStyle(
             color: Colors.indigo,
             fontSize: 20.0,

@@ -1,6 +1,6 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:permafrost/core/models/compartment.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
 import 'package:permafrost/core/redux/actions/compartment_actions.dart';
 import 'package:permafrost/core/redux/app_state.dart';
 import 'package:permafrost/ui/widgets/compartments/compartments_grid.dart';
@@ -9,15 +9,14 @@ class CompartmentsGridConnector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, ViewModel>(
-      model: ViewModel(),
-      builder: (BuildContext context, ViewModel model){
-        return CompartmentsGrid(
-          compartments: model.compartments,
-          itemsPerCompartment: model.itemsPerCompartment,
-          onDelete: model.onDeleted,
-        );
-      }
-    );
+        model: ViewModel(),
+        builder: (BuildContext context, ViewModel model) {
+          return CompartmentsGrid(
+            compartments: model.compartments,
+            itemsPerCompartment: model.itemsPerCompartment,
+            onDelete: model.onDeleted,
+          );
+        });
   }
 }
 
@@ -36,15 +35,16 @@ class ViewModel extends BaseModel<AppState> {
 
   Map<int, int> _countItems() {
     Map<int, int> itemsPerCompartment = {};
-    state.compartments.forEach((compartment) =>
+    state.fridge.compartments.forEach((compartment) =>
         itemsPerCompartment.putIfAbsent(compartment.id, () => 0));
-    state.items.forEach((item) => itemsPerCompartment[item.compartmentId]++);
+    state.fridge.items
+        .forEach((item) => itemsPerCompartment[item.compartmentId]++);
     return itemsPerCompartment;
   }
 
   @override
   ViewModel fromStore() => ViewModel.build(
-      compartments: state.compartments,
+      compartments: state.fridge.compartments,
       itemsPerCompartment: _countItems(),
       onDeleted: (id) => dispatch(RemoveCompartmentAction(id: id)));
 }

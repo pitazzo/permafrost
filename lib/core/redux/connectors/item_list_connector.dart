@@ -1,8 +1,9 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/enums/order_critera.dart';
-import 'package:permafrost/core/models/compartment.dart';
-import 'package:permafrost/core/models/item.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
+
 import 'package:permafrost/core/redux/app_state.dart';
 import 'package:permafrost/ui/widgets/items/item_list.dart';
 
@@ -28,7 +29,7 @@ class ViewModel extends BaseModel<AppState> {
 
   @override
   BaseModel fromStore() {
-    List<Item> items = state.items.toList();
+    List<Item> items = state.fridge.items.toList();
     if (state.searchCriteria.trim() != "") {
       items = items
           .where((item) => item.name
@@ -61,6 +62,7 @@ class ViewModel extends BaseModel<AppState> {
 
     items.sort(sortFunction);
 
-    return ViewModel.buid(compartments: state.compartments, items: items);
+    return ViewModel.buid(
+        compartments: state.fridge.compartments, items: items);
   }
 }

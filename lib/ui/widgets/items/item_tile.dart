@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:permafrost/core/models/compartment.dart';
-import 'package:permafrost/core/models/item.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
+
 import 'package:permafrost/core/redux/connectors/item_details_connector.dart';
 import 'package:permafrost/ui/shared/utils.dart';
 import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
@@ -29,8 +30,12 @@ class ItemTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 compartment != null
-                ? Text(compartment.name, style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.black))
-                : Container(),
+                    ? Text(compartment.name,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            .copyWith(color: Colors.black))
+                    : Container(),
                 Text('antes del ' + dateToString(item.expiryDate),
                     style: Theme.of(context).textTheme.subtitle1),
               ],

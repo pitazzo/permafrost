@@ -12,5 +12,4 @@ class SelectMenuAction extends ReduxAction<AppState> {
     dispatch(NavigateAction.pushReplacementNamed(this.selectedMenu));
     return state.copy(currentlySelectedMenu: this.selectedMenu);
   }
-  
 }

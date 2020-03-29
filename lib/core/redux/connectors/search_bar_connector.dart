@@ -8,8 +8,10 @@ class SearchBarConector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, Function(String)>(
-      converter: (store) => (text) => store.dispatch(SetSearchCriteria(newSearchCriteria: text)),
-      builder: (context, onSearchTextChange) => SearchBar(setSearchText: onSearchTextChange),
+      converter: (store) =>
+          (text) => store.dispatch(SetSearchCriteria(newSearchCriteria: text)),
+      builder: (context, onSearchTextChange) =>
+          SearchBar(setSearchText: onSearchTextChange),
     );
   }
 }

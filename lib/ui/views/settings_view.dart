@@ -26,9 +26,7 @@ class SettingsView extends StatelessWidget {
               ),
             ),
             Container(height: 20),
-            Text(
-              'Ajustes',
-              style: Theme.of(context).textTheme.headline1),
+            Text('Ajustes', style: Theme.of(context).textTheme.headline1),
           ],
         ),
       ),

@@ -41,8 +41,9 @@ class OrderCriteriaSelector extends StatelessWidget {
                   color:
                       criteria == currentCriteria ? Colors.white : Colors.grey),
             ),
-            backgroundColor:
-                criteria == currentCriteria ? Theme.of(context).accentColor : Colors.white),
+            backgroundColor: criteria == currentCriteria
+                ? Theme.of(context).accentColor
+                : Colors.white),
       ),
     );
   }

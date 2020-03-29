@@ -1,78 +1,68 @@
 import 'package:meta/meta.dart';
 import 'package:permafrost/core/enums/order_critera.dart';
-import 'package:permafrost/core/models/compartment.dart';
-import 'package:permafrost/core/models/item.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:permafrost/core/models/fridge/compartment.dart';
+import 'package:permafrost/core/models/fridge/fridge.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
 
+import 'package:permafrost/core/models/user.dart';
 
-@JsonSerializable()
 @immutable
 class AppState {
-  final List<Compartment> compartments;
-  final List<Item> items;
+  final User user;
+  final Fridge fridge;
   final String currentlySelectedMenu;
   final OrderCriteria orderCritera;
   final String searchCriteria;
 
-  AppState(
-      {@required this.compartments,
-      @required this.items,
-      @required this.currentlySelectedMenu,
-      @required this.orderCritera,
-      @required this.searchCriteria});
+  AppState({
+    @required this.user,
+    @required this.fridge,
+    @required this.currentlySelectedMenu,
+    @required this.orderCritera,
+    @required this.searchCriteria,
+  });
 
-  AppState copy(
-      {List<Compartment> compartments,
-      List<Item> items,
-      String currentlySelectedMenu,
-      bool loading,
-      OrderCriteria orderCriteria,
-      String searchCriteria}) {
+  AppState copy({
+    User user,
+    Fridge fridge,
+    String currentlySelectedMenu,
+    bool loading,
+    OrderCriteria orderCriteria,
+    String searchCriteria,
+  }) {
     return AppState(
-        compartments: compartments ?? this.compartments,
-        items: items ?? this.items,
-        currentlySelectedMenu:
-            currentlySelectedMenu ?? this.currentlySelectedMenu,
-        orderCritera: orderCriteria ?? this.orderCritera,
-        searchCriteria: searchCriteria ?? this.searchCriteria);
+      user: user ?? this.user,
+      fridge: fridge ?? this.fridge,
+      currentlySelectedMenu:
+          currentlySelectedMenu ?? this.currentlySelectedMenu,
+      orderCritera: orderCriteria ?? this.orderCritera,
+      searchCriteria: searchCriteria ?? this.searchCriteria,
+    );
   }
 
   static AppState initialState() => AppState(
-      compartments: [],
-      items: [],
+      user: User(name: '', currentFridge: '', accesibleFidges: []),
+      fridge: Fridge(owner: '', compartments: [], items: []),
       currentlySelectedMenu: "/",
       searchCriteria: "",
       orderCritera: OrderCriteria.ALPHABETIC);
 
   @override
   String toString() {
-    String output = 'AppState: {Compartments: ';
-    this
-        .compartments
-        .forEach((compartment) => output += compartment.toString() + ', ');
-    output += '}, currentlySelectedMenu: ' +
-        this.currentlySelectedMenu.toString() +
-        '}, search: ' + this.searchCriteria + '}, ';
-    output += '{Items: ';
-
-    this.items.forEach((item) => output += item.toString() + ', ');
-    output += '}';
-    return output;
+    return this.user.toString();
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is AppState &&
-            this.compartments == other.compartments &&
-            this.items == other.items &&
+            this.user == other.user &&
+            this.fridge == other.fridge &&
             this.currentlySelectedMenu == other.currentlySelectedMenu &&
             this.orderCritera == other.orderCritera &&
             this.searchCriteria == searchCriteria);
   }
 
   @override
-  // TODO: implement hashCode
-  int get hashCode => super.hashCode;
-
+  int get hashCode => this.user.hashCode ^ this.fridge.hashCode;
 }
