@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/fridge/compartment.dart';
 import 'package:permafrost/ui/views/compartment_view.dart';
+import 'package:permafrost/ui/views/create_user_view.dart';
 import 'package:permafrost/ui/views/edit_compartment_view.dart';
 import 'package:permafrost/ui/views/home_view.dart';
 import 'package:permafrost/ui/views/initial_loading.dart';
@@ -14,7 +15,8 @@ class Router {
         return MaterialPageRoute(builder: (_) => HomeView());
       case 'loading':
         return MaterialPageRoute(builder: (_) => InitialLoadingView());
-        break;
+      case 'createUser':
+        return MaterialPageRoute(builder: (_) => CreateUserView());        
       case 'items':
         return MaterialPageRoute(builder: (_) => ItemListView());
       case 'settings':

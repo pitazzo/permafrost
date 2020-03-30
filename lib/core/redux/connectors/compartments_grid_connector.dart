@@ -12,6 +12,7 @@ class CompartmentsGridConnector extends StatelessWidget {
         model: ViewModel(),
         builder: (BuildContext context, ViewModel model) {
           return CompartmentsGrid(
+            username: model.username,
             compartments: model.compartments,
             itemsPerCompartment: model.itemsPerCompartment,
             onDelete: model.onDeleted,
@@ -23,15 +24,17 @@ class CompartmentsGridConnector extends StatelessWidget {
 class ViewModel extends BaseModel<AppState> {
   ViewModel();
 
+  String username;
   List<Compartment> compartments;
   Map<int, int> itemsPerCompartment;
   Function(int) onDeleted;
 
-  ViewModel.build(
-      {@required this.compartments,
-      @required this.itemsPerCompartment,
-      @required this.onDeleted})
-      : super(equals: [compartments, itemsPerCompartment]);
+  ViewModel.build({
+    @required this.username,
+    @required this.compartments,
+    @required this.itemsPerCompartment,
+    @required this.onDeleted,
+  }) : super(equals: [compartments, itemsPerCompartment]);
 
   Map<int, int> _countItems() {
     Map<int, int> itemsPerCompartment = {};
@@ -44,6 +47,7 @@ class ViewModel extends BaseModel<AppState> {
 
   @override
   ViewModel fromStore() => ViewModel.build(
+      username: state.user.name,
       compartments: state.fridge.compartments,
       itemsPerCompartment: _countItems(),
       onDeleted: (id) => dispatch(RemoveCompartmentAction(id: id)));

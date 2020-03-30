@@ -11,6 +11,7 @@ class DrawerConnector extends StatelessWidget {
         model: ViewModel(),
         builder: (BuildContext context, ViewModel model) {
           return PermafrostDrawer(
+            username: model.username,
             selectedMenu: model.currentlySelectedMenu,
             onMenuSelected: model.onMenuSelected,
           );
@@ -21,15 +22,19 @@ class DrawerConnector extends StatelessWidget {
 class ViewModel extends BaseModel<AppState> {
   ViewModel();
 
+  String username;
   String currentlySelectedMenu;
   Function(String) onMenuSelected;
 
-  ViewModel.build(
-      {@required this.currentlySelectedMenu, @required this.onMenuSelected})
-      : super(equals: [currentlySelectedMenu]);
+  ViewModel.build({
+    @required this.username,
+    @required this.currentlySelectedMenu,
+    @required this.onMenuSelected,
+  }) : super(equals: [currentlySelectedMenu]);
 
   @override
   ViewModel fromStore() => ViewModel.build(
+      username: state.user.name,
       currentlySelectedMenu: state.currentlySelectedMenu,
       onMenuSelected: (menuId) {
         if (menuId != state.currentlySelectedMenu) {

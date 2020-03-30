@@ -27,7 +27,7 @@ class Fridge {
     return Fridge(
       owner: owner ?? this.owner,
       compartments: compartments ?? this.compartments,
-      items: items ?? this.compartments,
+      items: items ?? this.items,
     );
   }
 
@@ -41,9 +41,9 @@ class Fridge {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is Fridge &&
-            this.owner == owner &&
-            this.compartments == this.compartments &&
-            this.items == this.items);
+            this.owner == other.owner &&
+            this.compartments == other.compartments &&
+            this.items == other.items);
   }
 
   @override
