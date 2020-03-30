@@ -42,18 +42,6 @@ class _HomeViewState extends State<HomeView> {
                 ],
               ),
             ),
-            RichText(
-              text: TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                      text: 'Hola, Eva\n',
-                      style: Theme.of(context).textTheme.headline1),
-                  TextSpan(
-                      text: 'Esto es lo que hay en el congelador\n',
-                      style: Theme.of(context).textTheme.bodyText2),
-                ],
-              ),
-            ),
             CompartmentsGridConnector()
           ],
         ),

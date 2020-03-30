@@ -1,8 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:permafrost/core/enums/order_critera.dart';
-import 'package:permafrost/core/models/fridge/compartment.dart';
 import 'package:permafrost/core/models/fridge/fridge.dart';
-import 'package:permafrost/core/models/fridge/item.dart';
 
 import 'package:permafrost/core/models/user.dart';
 
@@ -41,7 +39,7 @@ class AppState {
   }
 
   static AppState initialState() => AppState(
-      user: User(name: '', currentFridge: '', accesibleFidges: []),
+      user: User(name: '', currentFridge: '', accesibleFridges: []),
       fridge: Fridge(owner: '', compartments: [], items: []),
       currentlySelectedMenu: "/",
       searchCriteria: "",
@@ -49,7 +47,7 @@ class AppState {
 
   @override
   String toString() {
-    return this.user.toString();
+    return this.user.toString() + '\n' + this.fridge.toString();
   }
 
   @override

@@ -1,5 +1,7 @@
 import 'package:async_redux/async_redux.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:permafrost/core/redux/actions/firebase_actions.dart';
 import 'package:permafrost/core/redux/app_state.dart';
 import 'package:permafrost/core/services/persistor.dart';
@@ -15,14 +17,6 @@ void main() async {
 
   setupLocator();
 
-  // var persistor = PermaPersistor();
-  // persistor.readState().then((initialState) {
-  //   if (initialState == null) {
-  //     initialState = AppState.initialState();
-  //     persistor.saveInitialState(initialState);
-  //   }
-  // });
-
   NavigateAction.setNavigatorKey(navigatorKey);
 
   final Store store = Store<AppState>(
@@ -33,7 +27,6 @@ void main() async {
   );
 
   store.dispatch(InitialSetup());
-  //await store.dispatchFuture(StartListenFirestoreAction());
 
   runApp(StoreProvider<AppState>(
     store: store,
@@ -52,6 +45,12 @@ class StateLogger implements StateObserver<AppState> {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return MaterialApp(
       title: 'Permafrost',
       navigatorKey: navigatorKey,

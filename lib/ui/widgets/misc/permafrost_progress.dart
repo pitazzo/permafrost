@@ -2,6 +2,11 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class PermafrostProgressIndicator extends StatefulWidget {
+
+  final double size;
+
+  PermafrostProgressIndicator({this.size = 100});
+
   _PermafrostProgressIndicatorState createState() =>
       _PermafrostProgressIndicatorState();
 }
@@ -32,7 +37,7 @@ class _PermafrostProgressIndicatorState
         angle: _rotator.value,
         child: Icon(
           Icons.ac_unit,
-          size: 100,
+          size: widget.size,
           color: Theme.of(context).primaryColor,
         ));
   }

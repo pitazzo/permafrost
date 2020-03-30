@@ -9,18 +9,19 @@ part 'user.g.dart';
 class User {
   String name;
   String currentFridge;
-  List<String> accesibleFidges;
+  List<String> accesibleFridges;
 
-  User(
-      {@required this.name,
-      @required this.currentFridge,
-      @required this.accesibleFidges});
+  User({
+    @required this.name,
+    @required this.currentFridge,
+    @required this.accesibleFridges,
+  });
 
-  User copy({String name, String currentFridge, List<String> accesibleFidges}) {
+  User copy({String name, String currentFridge, List<String> accesibleFridges}) {
     return User(
         name: name ?? this.name,
         currentFridge: currentFridge ?? this.currentFridge,
-        accesibleFidges: accesibleFidges ?? this.accesibleFidges);
+        accesibleFridges: accesibleFridges ?? this.accesibleFridges);
   }
 
   @override
@@ -33,16 +34,16 @@ class User {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other is User &&
-            this.name == name &&
-            this.currentFridge == this.currentFridge &&
-            this.accesibleFidges == this.accesibleFidges);
+            this.name == other.name &&
+            this.currentFridge == other.currentFridge &&
+            this.accesibleFridges == other.accesibleFridges);
   }
 
   @override
   int get hashCode =>
       this.name.hashCode ^
       this.currentFridge.hashCode ^
-      this.accesibleFidges.hashCode;
+      this.accesibleFridges.hashCode;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

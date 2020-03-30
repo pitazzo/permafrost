@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PermafrostDrawer extends StatelessWidget {
+  final String username;
   final String selectedMenu;
   final Function(String) onMenuSelected;
 
-  PermafrostDrawer(
-      {@required this.selectedMenu, @required this.onMenuSelected});
+  PermafrostDrawer({
+    @required this.username,
+    @required this.selectedMenu,
+    @required this.onMenuSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +32,13 @@ class PermafrostDrawer extends StatelessWidget {
                   ListTile(
                     leading: CircleAvatar(
                       radius: 30,
-                      child: Text('E',
+                      child: Text(username[0],
                           style: Theme.of(context)
                               .textTheme
                               .headline2
                               .copyWith(color: Colors.white)),
                     ),
-                    title: Text('Eva',
+                    title: Text(username,
                         style: Theme.of(context).textTheme.headline3),
                   ),
                   Expanded(
