@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/fridge/item.dart';
+import 'package:permafrost/core/redux/connectors/item_editor_connector.dart';
 
 import 'package:permafrost/ui/shared/utils.dart';
 import 'package:permafrost/ui/widgets/misc/save_button.dart';
@@ -34,11 +35,40 @@ class _ItemDetailsState extends State<ItemDetails> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(height: 10),
-              Text(widget.item.name,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3
-                      .copyWith(color: Theme.of(context).accentColor)),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      widget.item.name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline3
+                          .copyWith(color: Theme.of(context).accentColor),
+                    ),
+                  ),
+                  IconButton(
+                      icon: Icon(
+                        Icons.mode_edit,
+                        color: Theme.of(context).primaryColor,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        showModalBottomSheet(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(15.0),
+                                  topRight: Radius.circular(15.0)),
+                            ),
+                            context: context,
+                            builder: (context) {
+                              return ItemEditorConnector(
+                                originalItem: widget.item,
+                              );
+                            });
+                      })
+                ],
+              ),
               Divider(),
               Container(height: 5),
               Text('desde el ' + dateToString(widget.item.entryDate),
@@ -53,10 +83,8 @@ class _ItemDetailsState extends State<ItemDetails> {
                   Expanded(
                     child: Slider(
                         min: 0,
+                        divisions: widget.item.amount.ceil(),
                         max: widget.item.amount,
-                        divisions: widget.item.units == 'uds.'
-                            ? widget.item.amount.ceil()
-                            : null,
                         value: _amount,
                         onChanged: (amount) =>
                             setState(() => _amount = amount)),

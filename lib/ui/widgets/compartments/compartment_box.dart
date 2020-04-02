@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permafrost/core/models/fridge/compartment.dart';
 import 'package:permafrost/ui/shared/custom_colors.dart';
 import 'package:permafrost/ui/widgets/compartments/compartment_icon.dart';
+import 'package:permafrost/ui/widgets/compartments/delete_confirmation.dart';
 
 class CompartmentBox extends StatefulWidget {
   final Compartment compartment;
@@ -62,7 +63,16 @@ class _CompartmentBoxState extends State<CompartmentBox> {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
           onPressed: () {
             setState(() => isShowingOptions = !isShowingOptions);
-            widget.onDelete(widget.compartment.id);
+            showModalBottomSheet(
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.0),
+                      topRight: Radius.circular(15.0)),
+                ),
+                context: context,
+                builder: (_) => CompartmentDeleteConfirmation(
+                    onDelete: () => widget.onDelete(widget.compartment.id)));
           },
           color: CustomColors.compartmentColors[widget.compartment.color],
           textColor: Colors.white,

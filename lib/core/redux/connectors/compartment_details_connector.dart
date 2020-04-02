@@ -39,5 +39,6 @@ class ViewModel extends BaseModel<AppState> {
           .firstWhere((compartment) => compartment.id == this.compartmentId),
       items: state.fridge.items
           .where((item) => item.compartmentId == this.compartmentId)
-          .toList());
+          .toList()
+            ..sort((item1, item2) => item1.name.compareTo(item2.name)));
 }
