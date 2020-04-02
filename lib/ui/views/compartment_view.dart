@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/redux/connectors/compartment_details_connector.dart';
-import 'package:permafrost/core/redux/connectors/item_adder_connector.dart';
+import 'package:permafrost/core/redux/connectors/item_editor_connector.dart';
 
 class CompartmentView extends StatelessWidget {
   final int compartmentId;
@@ -25,6 +25,6 @@ class CompartmentView extends StatelessWidget {
                 ),
                 context: context,
                 builder: (_) =>
-                    ItemAdderConnector(compartmentId: compartmentId))));
+                    ItemEditorConnector(compartmentId: compartmentId))));
   }
 }

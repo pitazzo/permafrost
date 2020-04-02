@@ -50,6 +50,43 @@ class AddItemAction extends ReduxAction<AppState> {
   }
 }
 
+class EditItemAction extends ReduxAction<AppState> {
+  final int itemId;
+  final int compartmentId;
+  final String name;
+  final double amount;
+  final String units;
+  final DateTime entryDate;
+  final DateTime expiryDate;
+
+  EditItemAction({
+    @required this.itemId,
+    @required this.compartmentId,
+    @required this.name,
+    @required this.amount,
+    @required this.units,
+    @required this.entryDate,
+    @required this.expiryDate,
+  });
+
+  @override
+  AppState reduce() {
+    Item newItem = Item(
+        id: itemId,
+        name: name,
+        amount: amount,
+        units: units,
+        entryDate: entryDate,
+        expiryDate: expiryDate,
+        compartmentId: compartmentId);
+    return state.copy(
+        fridge: state.fridge.copy(
+            items: state.fridge.items.toList()
+              ..removeWhere((item) => item.id == itemId)
+              ..add(newItem)));
+  }
+}
+
 class EditItemAmountAction extends ReduxAction<AppState> {
   final int id;
   final double amount;

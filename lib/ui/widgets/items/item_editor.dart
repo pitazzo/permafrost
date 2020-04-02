@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:intl/intl.dart';
+import 'package:permafrost/core/models/fridge/item.dart';
 import 'package:permafrost/core/services/validators.dart';
 import 'package:permafrost/ui/widgets/misc/save_button.dart';
 
-class ItemAdder extends StatefulWidget {
+class ItemEditor extends StatefulWidget {
+  final Item originalItem;
   final Function(String, double, String, DateTime, DateTime) onAdded;
+  Function(int, int, String, double, String, DateTime, DateTime) onEdited;
 
-  ItemAdder({Key key, @required this.onAdded});
+  ItemEditor(
+      {Key key,
+      @required this.onAdded,
+      @required this.onEdited,
+      this.originalItem});
 
   @override
-  _ItemAdderState createState() => _ItemAdderState();
+  _ItemEditorState createState() => _ItemEditorState();
 }
 
-class _ItemAdderState extends State<ItemAdder> {
+class _ItemEditorState extends State<ItemEditor> {
   String _name;
   double _amount;
   String _units;
@@ -24,9 +31,19 @@ class _ItemAdderState extends State<ItemAdder> {
 
   @override
   void initState() {
-    _units = 'uds.';
-    _entryDate = DateTime.now();
-    _expiryDate = DateTime.now().add(Duration(days: 30));
+    if (widget.originalItem == null) {
+      _name = '';
+      _amount = 1.0;
+      _units = 'uds.';
+      _entryDate = DateTime.now();
+      _expiryDate = DateTime.now().add(Duration(days: 30));
+    } else {
+      _name = widget.originalItem.name;
+      _amount = widget.originalItem.amount;
+      _units = widget.originalItem.units;
+      _entryDate = widget.originalItem.entryDate;
+      _expiryDate = widget.originalItem.expiryDate;
+    }
     super.initState();
   }
 
@@ -49,6 +66,7 @@ class _ItemAdderState extends State<ItemAdder> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    initialValue: _name,
                     validator: FormValidators.lengthValidator,
                     keyboardType: TextInputType.multiline,
                     style: Theme.of(context).textTheme.subtitle1,
@@ -65,6 +83,9 @@ class _ItemAdderState extends State<ItemAdder> {
                     children: <Widget>[
                       Expanded(
                         child: TextFormField(
+                          initialValue: widget.originalItem == null
+                              ? ''
+                              : _amount.toInt().toString(),
                           validator: _units == 'uds.'
                               ? FormValidators.intAmountValidator
                               : FormValidators.doubleAmountValidator,
@@ -150,8 +171,25 @@ class _ItemAdderState extends State<ItemAdder> {
               padding: const EdgeInsets.only(bottom: 10.0),
               child: SaveButton(onSave: () {
                 if (_formKey.currentState.validate()) {
-                  widget.onAdded(
-                      _name, _amount, _units, _entryDate, _expiryDate);
+                  if (widget.originalItem == null) {
+                    widget.onAdded(
+                      _name,
+                      _amount,
+                      _units,
+                      _entryDate,
+                      _expiryDate,
+                    );
+                  } else {
+                    widget.onEdited(
+                      widget.originalItem.id,
+                      widget.originalItem.compartmentId,
+                      _name,
+                      _amount,
+                      _units,
+                      _entryDate,
+                      _expiryDate,
+                    );
+                  }
                   Navigator.of(context).pop();
                 }
               }))
