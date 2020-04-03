@@ -8,7 +8,7 @@ class OrderCriteriaSelector extends StatelessWidget {
   static const Map<OrderCriteria, String> humanCriteria = {
     OrderCriteria.ALPHABETIC: 'Nombre',
     OrderCriteria.EXPIRY_DATE: 'Caducidad',
-    OrderCriteria.ENTRY_DATE: 'Antigüedad'
+    OrderCriteria.ENTRY_DATE: 'Fecha de entrada'
   };
 
   OrderCriteriaSelector(

@@ -26,69 +26,67 @@ class _FridgeSharingState extends State<FridgeSharing> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
+      child: ListView(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Compartir mi nevera',
-                          style: Theme.of(context).textTheme.headline6),
-                      Text(
-                          "Código para compartir tu nevera para que otras personas puedan ver y modificar lo que hay en ella",
-                          maxLines: 4,
-                          textAlign: TextAlign.justify,
-                          overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2
-                              .copyWith(fontSize: 17))
-                    ],
-                  ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Compartir mi nevera',
+                        style: Theme.of(context).textTheme.headline6),
+                    Text(
+                        "Compartir este código para que otras personas puedan ver y modificar lo que hay en tu nevera",
+                        maxLines: 4,
+                        textAlign: TextAlign.justify,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            .copyWith(fontSize: 17))
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
-                  child: IconButton(
-                    icon: FaIcon(FontAwesomeIcons.qrcode,
-                        color: Colors.indigo, size: 40),
-                    onPressed: () => showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0)),
-                      ),
-                      context: context,
-                      builder: (context) => Center(
-                        child: PrettyQr(
-                            typeNumber: 3,
-                            size: 300,
-                            elementColor: Theme.of(context).primaryColor,
-                            data: widget.currentFridgeUUID,
-                            roundEdges: true),
-                      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30.0),
+                child: IconButton(
+                  icon: FaIcon(FontAwesomeIcons.qrcode,
+                      color: Colors.indigo, size: 40),
+                  onPressed: () => showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0)),
+                    ),
+                    context: context,
+                    builder: (context) => Center(
+                      child: PrettyQr(
+                          typeNumber: 3,
+                          size: 300,
+                          elementColor: Theme.of(context).primaryColor,
+                          data: widget.currentFridgeUUID,
+                          roundEdges: true),
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
+          Container(height: 10),
           Divider(),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
+            padding: EdgeInsets.symmetric(vertical: 10.0),
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Neveras accesibles',
+                      Text('Importar nevera',
                           style: Theme.of(context).textTheme.headline6),
                       Text(
-                          "Si quieres compartir tu nevera para que otras personas puedan ver y modificar lo que hay",
+                          "Añade neveras de familiares y amigos escaneando su código",
                           maxLines: 4,
                           textAlign: TextAlign.justify,
                           overflow: TextOverflow.ellipsis,
@@ -152,14 +150,22 @@ class _FridgeSharingState extends State<FridgeSharing> {
               ],
             ),
           ),
-          Expanded(
-            child: ListView(
+          Divider(),
+          Container(height: 10),
+          Text('Neveras accesibles',
+              style: Theme.of(context).textTheme.headline6),
+          Text(
+              "Selecciona qué nevera quieres cargar en Permafrost, podrás modificarla en tiempo real",
+              maxLines: 4,
+              textAlign: TextAlign.justify,
+              overflow: TextOverflow.ellipsis,
+              style:
+                  Theme.of(context).textTheme.bodyText2.copyWith(fontSize: 17)),
+          Column(
               children: List.generate(
-                widget.accesibleFridges.length,
-                (index) => _buildFridgeTile(index, context),
-              ),
-            ),
-          )
+            widget.accesibleFridges.length,
+            (index) => _buildFridgeTile(index, context),
+          ))
         ],
       ),
     );

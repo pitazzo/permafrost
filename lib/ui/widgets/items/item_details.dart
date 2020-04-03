@@ -81,13 +81,23 @@ class _ItemDetailsState extends State<ItemDetails> {
               Row(
                 children: <Widget>[
                   Expanded(
-                    child: Slider(
-                        min: 0,
-                        divisions: widget.item.amount.ceil(),
-                        max: widget.item.amount,
-                        value: _amount,
-                        onChanged: (amount) =>
-                            setState(() => _amount = amount)),
+                    child: Builder(
+                      builder: (BuildContext context) {
+                        int divisions;
+                        if(widget.item.units == 'gr.'){
+                          divisions = (widget.item.amount / 10).ceil();
+                        }else if(widget.item.units == 'uds.'){
+                          divisions = widget.item.amount.ceil();
+                        }
+                        return Slider(
+                            min: 0,
+                            divisions: divisions,
+                            max: widget.item.amount,
+                            value: _amount,
+                            onChanged: (amount) =>
+                                setState(() => _amount = amount));
+                      },
+                    ),
                   ),
                   Text(
                     amountToString(_amount, widget.item.units),
