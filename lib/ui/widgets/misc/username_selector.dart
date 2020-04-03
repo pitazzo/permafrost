@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/services/validators.dart';
 import 'package:permafrost/ui/widgets/misc/permafrost_progress.dart';
-import 'package:permafrost/ui/widgets/misc/save_button.dart';
 
 class UsernameSelector extends StatefulWidget {
   final Function(String) onSave;

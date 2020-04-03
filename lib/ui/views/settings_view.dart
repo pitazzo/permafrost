@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permafrost/core/redux/connectors/drawer_connector.dart';
 import 'package:permafrost/core/redux/connectors/fridge_sharing_connector.dart';
-import 'package:permafrost/ui/widgets/settings/fridge_sharing.dart';
 
 class SettingsView extends StatelessWidget {
   @override
