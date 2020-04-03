@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:permafrost/core/models/fridge/item.dart';
 import 'package:permafrost/core/services/validators.dart';
@@ -8,7 +9,7 @@ import 'package:permafrost/ui/widgets/misc/save_button.dart';
 class ItemEditor extends StatefulWidget {
   final Item originalItem;
   final Function(String, double, String, DateTime, DateTime) onAdded;
-  Function(int, int, String, double, String, DateTime, DateTime) onEdited;
+  final Function(int, int, String, double, String, DateTime, DateTime) onEdited;
 
   ItemEditor(
       {Key key,

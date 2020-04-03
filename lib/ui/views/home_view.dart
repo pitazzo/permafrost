@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
                         onTap: () => Scaffold.of(context).openDrawer()),
                   ),
                   Icon(Icons.ac_unit,
-                      size: 150, color: Theme.of(context).primaryColorLight),
+                      size: 120, color: Theme.of(context).primaryColorLight),
                 ],
               ),
             ),
